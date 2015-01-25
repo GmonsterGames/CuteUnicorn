@@ -73,13 +73,18 @@ public class GMScript : MonoBehaviour {
 		if (CorteMonedasNro >= CortesNecesariosParaMoneda) {
 			CorteMonedasNro = 0;
 			UltimaMonedaInstanciada = (GameObject)Instantiate (laMoneda, CuerpoPony.transform.position + new Vector3 (0,1,0), Quaternion.identity); 
-			Collider2D UltimaMoneda = UltimaMonedaInstanciada.GetComponent<Collider2D>();
-			Physics2D.IgnoreCollision (pata1, UltimaMoneda, true);
-			Physics2D.IgnoreCollision (pata2, UltimaMoneda, true);
-			Physics2D.IgnoreCollision (pata3, UltimaMoneda, true);
-			Physics2D.IgnoreCollision (pata4, UltimaMoneda, true);
-			Physics2D.IgnoreCollision (CuerpoPony, UltimaMoneda, true);
-			Physics2D.IgnoreCollision (Cola, UltimaMoneda, true);
+			try {
+				Collider2D[] UltimaMoneda = UltimaMonedaInstanciada.GetComponents<Collider2D>();
+				Physics2D.IgnoreCollision (pata1, UltimaMoneda[1], true);
+				Physics2D.IgnoreCollision (pata2, UltimaMoneda[1], true);
+				Physics2D.IgnoreCollision (pata3, UltimaMoneda[1], true);
+				Physics2D.IgnoreCollision (pata4, UltimaMoneda[1], true);
+				Physics2D.IgnoreCollision (CuerpoPony, UltimaMoneda[1], true);
+				Physics2D.IgnoreCollision (Cola, UltimaMoneda[1], true);
+			} catch (System.Exception ex) {
+				Debug.Log(ex);
+			}
+
 		}
 
 
