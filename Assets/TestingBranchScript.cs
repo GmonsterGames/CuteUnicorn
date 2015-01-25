@@ -12,10 +12,7 @@ public class TestingBranchScript : MonoBehaviour {
 	void Update () {
 	
 	}
-<<<<<<< HEAD
 
 	//aca mastrom esta agregando algo
-=======
-	
->>>>>>> master
+
 }
